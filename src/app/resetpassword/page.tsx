@@ -16,7 +16,8 @@ export default function ResetPassword() {
   const isDisabled = loading || !password || !confirmPassword;
 
   useEffect(() => {
-    const urlToken = window.location.search.split("=")[1];
+    const params = new URLSearchParams(globalThis.location.search);
+    const urlToken = params.get("token");
     setToken(urlToken || "");
   }, []);
 

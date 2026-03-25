@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
-import crypto from "crypto";
-import jwt, { SignOptions } from "jsonwebtoken";
+import crypto from "node:crypto";
+import jwt from "jsonwebtoken";
+import { StringValue } from "ms";
 
 export const hashPassword = async (password: string): Promise<string> => {
   const salt = await bcrypt.genSalt(10);
@@ -16,12 +17,12 @@ export const comparePassword = async (
 
 export const createJwtToken = (tokenPayload: any) => {
   return jwt.sign(tokenPayload, process.env.JWT_TOKEN_SECRET!, {
-    expiresIn: process.env.JWT_TOKEN_EXPIRY as SignOptions["expiresIn"],
+    expiresIn: process.env.JWT_TOKEN_EXPIRY as StringValue,
   });
 };
 
 export const verifyJwtToken = (token: string) => {
-  return jwt.verify(token, process.env.JWT_TOKEN_SECRET!);
+  return jwt.verify(token, process.env.JWT_TOKEN_SECRET as string);
 };
 
 export const createRawToken = (): string => {

@@ -5,7 +5,6 @@ import {
 import { sendMail } from "@/src/helpers/mailer";
 import { dbConnect } from "@/src/lib/dbConnect";
 import User from "@/src/models/User";
-import jwt, { SignOptions } from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
 dbConnect();

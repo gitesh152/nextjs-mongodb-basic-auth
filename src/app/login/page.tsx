@@ -33,7 +33,7 @@ function LoginPage() {
       const response = await axios.post("/api/users/login", user);
       toast.success(response.data?.message || "User Logged-in successfully.");
       const from = searchParams.get("from");
-      const safePath = from && from.startsWith("/") ? from : "/profile";
+      const safePath = from?.startsWith("/") ? from : "/profile";
       router.push(safePath);
     } catch (error) {
       if (axios.isAxiosError(error)) {

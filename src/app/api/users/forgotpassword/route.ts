@@ -1,4 +1,3 @@
-import { createHashedToken } from "@/src/helpers/credential.helpers";
 import { sendMail } from "@/src/helpers/mailer";
 import { dbConnect } from "@/src/lib/dbConnect";
 import User from "@/src/models/User";
